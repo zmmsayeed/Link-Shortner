@@ -1,0 +1,11 @@
+{
+  "name": "ls-server",
+  "version": "1.0.0",
+  "description": "Backend code for link shortner",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mohammad Zimam Sayeed",
+  "license": "ISC"
+}
