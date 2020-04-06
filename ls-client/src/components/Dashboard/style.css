@@ -1,0 +1,18 @@
+.mainContainer {
+    min-height: 100vh;
+    background: url("/images/background.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.innerContainer {
+    width: 80%;
+    background: rgba(0,0,0, 0.8);
+    color: white;
+}
+
+.form-control {
+    border: 0;
+    border-radius: 0;
+    background: rgb(255,255,255);
+    font-weight: bold;
+}
