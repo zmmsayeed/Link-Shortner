@@ -1,0 +1,34 @@
+openapi: 3.0.0
+info:
+  description: "This is a YML for all the API's to be made in AWS API Gateway for Link Shortner"
+  version: "1.0.0"
+  title: "Link Shortner APIs"
+  contact:
+    email: "zmmmsayeed@gmail.com"
+tags:
+  - name: "Link Shortner"
+    description: "Everything about link shortner APIs"
+    externalDocs:
+      description: "Find out more"
+      url: "https://github.com/zmmsayeed"
+  
+paths:
+  /createLink:
+    post:
+      tags:
+        - Link Shortner
+      summary: Create a new short link
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customToken:
+                  type: string
+                  format: string
+                  example: maleClothing
+      responses:
+        '200':
+          description: Link creation was successful
+          
