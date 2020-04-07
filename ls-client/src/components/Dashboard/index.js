@@ -14,23 +14,23 @@ class Dashboard extends Component {
 
                 <div className="innerContainer p-5 h-100 mx-auto mt-5">
                     <form>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="longUrl">Enter Long URL:</label>
-                            <input type="text" class="form-control" id="longUrl" aria-describedby="linkHelp" />
-                            <small id="linkHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <input type="text" className="form-control" id="longUrl" aria-describedby="linkHelp" />
+                            <small id="linkHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
 
-                        <div class="form-group mb-5">
+                        <div className="form-group mb-5">
                             <label>Enter Custom Token (Optional):</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text font-weight-bold">http://someshorturl.com/</div>
+                            <div className="input-group">
+                                <div className="input-group-prepend">
+                                    <div className="input-group-text font-weight-bold">http://someshorturl.com/</div>
                                 </div>
-                                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="customToken" />
+                                <input type="text" className="form-control" id="inlineFormInputGroup" placeholder="customToken" />
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-info mb-5">Generate Short URL</button>
+                        <button type="submit" className="btn btn-info mb-5">Generate Short URL</button>
 
                         <p className="text-danger"><b>NOTE: </b> Link generated will be valid only for 7 days.</p>
                     </form>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Switch, Redirect, Link, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 // importing components to render
 import Dashboard from '../components/Dashboard';
