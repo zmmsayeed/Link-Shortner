@@ -9,6 +9,7 @@
   "author": "Mohammad Zimam Sayeed",
   "license": "ISC",
   "dependencies": {
-    "aws-serverless-express": "^3.3.8"
+    "aws-serverless-express": "^3.3.8",
+    "mongodb": "^3.5.5"
   }
 }
