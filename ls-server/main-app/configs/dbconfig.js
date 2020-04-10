@@ -1,6 +1,6 @@
 const mongoClient = require('mongodb').MongoClient;
 
-const { mongoUrl, dbName } = require('./config');
+const { mongodbUrl, dbName } = require('./config');
 const UUID = require('mongodb').UUID;
 const mongoOption = {useNewUrlParser:true, useUnifiedTopology: true};
 
@@ -14,7 +14,7 @@ const connect = (cb) => {
         cb();
     }
     else {
-        mongoClient.connect(mongoUrl, mongoOption, (err, client) => {
+        mongoClient.connect(mongodbUrl, mongoOption, (err, client) => {
             if(err) {
                 cb(err);
             }
