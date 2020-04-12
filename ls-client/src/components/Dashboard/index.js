@@ -58,19 +58,12 @@ class Dashboard extends Component {
                                     }}
                                 </Field>
 
-                                <Field name="token" placeholder="Enter long URL">
+                                <Field name="token" placeholder="Enter Custom Token (Optional):">
                                     {({ input, meta, placeholder }) => {
-                                        let error = false;
-                                        if (meta.error && meta.visited && !meta.active) {
-                                            error = true;
-                                        }
-                                        else {
-                                            error = false;
-                                        }
                                         return (
 
                                             <div className="form-group mb-5">
-                                                <label>Enter Custom Token (Optional):</label>
+                                                <label>{placeholder}</label>
                                                 <div className="input-group">
                                                     <div className="input-group-prepend">
                                                         <div className="input-group-text font-weight-bold">http://someshorturl.com/</div>
@@ -81,6 +74,7 @@ class Dashboard extends Component {
                                         )
                                     }}
                                 </Field>
+
 
                                 <button type="submit" className="btn btn-info mb-5" disabled={submitting || !valid || pristine}>
                                     Generate Short URL
