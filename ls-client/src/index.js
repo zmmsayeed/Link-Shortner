@@ -5,8 +5,8 @@ import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 
-import rootReducer from 'IMPORT YOUR COMBINED REDUCER';
-import rootSaga from 'IMPORT YOUR SAGA';
+import rootReducer from './reducer';
+import rootSaga from './saga';
 
 import './index.css';
 import App from './App';
@@ -19,7 +19,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 // create store and applying middleware
 export const store = createStore(
-  persistedReducer,
+  rootReducer,
   applyMiddleware(sagaMiddleware),
 );
 

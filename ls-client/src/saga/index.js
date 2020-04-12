@@ -1,5 +1,5 @@
 import { put, takeLatest, all } from 'redux-saga/effects';
-import { receiveApi } from 'YOUR MAIN ACTION FILE';
+import { receiveApi } from '../actions';
 
 function* fetchMessage(data) {
 
