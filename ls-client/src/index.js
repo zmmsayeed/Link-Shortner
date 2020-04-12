@@ -1,13 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import { Provider } from 'react-redux';
+
+import rootReducer from 'IMPORT YOUR COMBINED REDUCER';
+import rootSaga from 'IMPORT YOUR SAGA';
+
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 
+// create saga middleware
+const sagaMiddleware = createSagaMiddleware();
+
+
+// create store and applying middleware
+export const store = createStore(
+  persistedReducer,
+  applyMiddleware(sagaMiddleware),
+);
+
+
+sagaMiddleware.run(rootSaga);
+
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </BrowserRouter>,
   document.getElementById('root')
 );
