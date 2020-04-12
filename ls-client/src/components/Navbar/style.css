@@ -2,10 +2,9 @@
 /* font-family: 'Righteous', cursive; */
 
 .navbar.bg-dark {
-    /* background-color: rgba(0,0,0, 0.8) !important; */
-    background-color: rgb(0,0,0) !important;
+    background-color: rgba(0,0,0, 0.8) !important;
     font-family: 'Catamaran', sans-serif;
-    box-shadow: 5px 2px 5px gray;
+    text-transform: uppercase;
 }
 
 .navbar-brand {

@@ -3,23 +3,44 @@
 
 .mainContainer {
     min-height: 100vh;
-    /* background: url("/images/background.jpg") no-repeat center center fixed; */
+    background: url("/images/bg.jpeg") no-repeat center center fixed;
     background-size: cover;
-}
-
-.innerContainer {
-    width: 80%;
-    background: rgba(0,0,0, 0.8);
     color: white;
 }
 
+.innerContainer {
+    width: 70%;
+}
+
+.enterField {
+    padding: 2px;
+    background: red;
+    width: 100%;
+}
+
 .form-control {
-    border: 0;
-    border-radius: 0;
-    background: rgb(255,255,255);
-    font-weight: bold;
+    border: 1px solid gray;
+    border-radius: 2em;
+    background: rgba(255,255,255, 0.7);
+    /* font-weight: bold; */
+}
+
+.input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle), .input-group>.input-group-append:last-child>.input-group-text:not(:last-child), .input-group>.input-group-append:not(:last-child)>.btn, .input-group>.input-group-append:not(:last-child)>.input-group-text, .input-group>.input-group-prepend>.btn, .input-group>.input-group-prepend>.input-group-text {
+    border-top-left-radius: 2em;
+    border-bottom-left-radius: 2em;
 }
 
 .hidden {
     display: none;
+}
+
+.generateButton {
+    border-radius: 2em;
+    line-height: 1.5;
+    color: white !important;
+    font-weight: bold;
+}
+
+.link {
+    cursor: pointer;
 }
