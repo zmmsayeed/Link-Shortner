@@ -61,6 +61,7 @@ router.post('/createLink', async (req, res) => {
             else {
                 let insertedData = await db.getDb().collection('linkShortner').insertOne({
                     _id: uuid.v4(),
+                    link: req.body.link,
                     token: customToken,
                     createdAt: new Date().toISOString(),
                 });
@@ -88,6 +89,7 @@ router.post('/createLink', async (req, res) => {
 
             let insertedData = await db.getDb().collection('linkShortner').insertOne({
                 _id: uuid.v4(),
+                link: req.body.link,
                 token: token,
                 createdAt: new Date().toISOString(),
             });
@@ -109,4 +111,4 @@ router.post('/createLink', async (req, res) => {
 
 });
 
-module.exports = { coreRoutes: router };
+module.exports = { coreRoutes: router };   
