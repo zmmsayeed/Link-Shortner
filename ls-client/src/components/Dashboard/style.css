@@ -1,6 +1,9 @@
+/* font-family: 'Catamaran', sans-serif; */
+/* font-family: 'Righteous', cursive; */
+
 .mainContainer {
     min-height: 100vh;
-    background: url("/images/background.jpg") no-repeat center center fixed;
+    /* background: url("/images/background.jpg") no-repeat center center fixed; */
     background-size: cover;
 }
 

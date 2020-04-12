@@ -9,7 +9,7 @@ import Main from './navigation';
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Main />
     </div>
   );
