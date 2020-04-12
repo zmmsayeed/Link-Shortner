@@ -3,11 +3,11 @@ const LinkShortnerReducer = (state = {}, action) => {
     const newState = { ...state };
     
     switch (action.type) {
-        case 'YOUR_ACTION_KEY_TO_TRIGGER_SAGA_API':
+        case 'CREATE_LINK':
             return { ...newState, loading: true, isFeatched: false }
             break
-        case 'YOUR_ACTION_KEY_WHICH_WIIL_BE_TRIGGERED_BY_SAGA':
-            return { ...newState, loading: false, isFeatched: true, response: action.response, action: action.type }
+        case 'CREATE_LINK_RESPONSE':
+            return { ...newState, loading: false, isFeatched: true, response: action.data.json, action: action.type }
             break
         default:
             return newState

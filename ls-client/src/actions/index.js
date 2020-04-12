@@ -1,11 +1,11 @@
-export const callApi = (data) => {
+export const createLink = (data) => {
     return ({
-        type: 'YOUR_ACTION_KEY_TO_TRIGGER_SAGA_API', data
+        type: 'CREATE_LINK', data
     })
 };
 
-export const receiveApi = (data) => {
+export const createLinkResponse = (data) => {
     return ({
-        type: 'YOUR_ACTION_KEY_WHICH_WIIL_BE_TRIGGERED_BY_SAGA', data
+        type: 'CREATE_LINK_RESPONSE', data
     })
 };

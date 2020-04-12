@@ -1,10 +1,10 @@
 import { put, takeLatest, all } from 'redux-saga/effects';
-import { receiveApi } from '../actions';
+import { apiUrl } from '../config';
+import { createLinkResponse } from '../actions';
 
-function* fetchMessage(data) {
-
-    const json = yield fetch('API URL', {
-        method: 'API TYPE',
+function* createLinkFunc(data) {
+    const json = yield fetch(apiUrl+'createLink', {
+        method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -13,12 +13,12 @@ function* fetchMessage(data) {
     })
         .then(response => response.json());
 
-    yield put(receiveApi({ json: json || [{ error: json }] }));
+    yield put(createLinkResponse({ json: json || [{ error: json }] }));
 }
 
 
 function* actionWatcher() {
-    yield takeLatest('YOUR_ACTION_KEY_TO_TRIGGER_SAGA_API', fetchMessage);
+    yield takeLatest('CREATE_LINK', createLinkFunc);
 }
 
 

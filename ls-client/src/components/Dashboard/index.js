@@ -9,7 +9,7 @@ import Navbar from '../Navbar';
 import LinkShortnerReducer from '../../reducer/LinkShortnerReducer';
 
 // importing redux actions
-import { callApi } from '../../actions';
+import { createLink } from '../../actions';
 
 // importing icons
 import { FaArrowRight } from 'react-icons/fa';
@@ -18,17 +18,25 @@ import { MdClose } from 'react-icons/md';
 // importing stylesheet 
 import './style.css';
 
+let response;
+
 class Dashboard extends Component {
     constructor(props) {
         super(props);
 
+        this.response = !this.props.state.LinkShortnerReducer.response ? {} : this.props.state.LinkShortnerReducer.response
+
         this.state = {
-            customDomain: false
+            customDomain: false,
         }
     }
 
     handleSubmit = (values) => {
         console.log("Values: ", values)
+        this.props.createLink({
+            link: values.link,
+            customToken: values.token
+        });
     }
 
     validate = (values) => {
@@ -65,7 +73,7 @@ class Dashboard extends Component {
                         render={({ handleSubmit, submitting, valid, pristine }) => (
                             <form onSubmit={handleSubmit} >
                                 <div className="row">
-                                    <div className={this.state.customDomain?"col-md-12":"col-md-11"}>
+                                    <div className={this.state.customDomain ? "col-md-12" : "col-md-11"}>
                                         <Field name="link" placeholder="http://enter-long-url-here.com">
                                             {({ input, meta, placeholder }) => {
                                                 let error = false;
@@ -84,7 +92,7 @@ class Dashboard extends Component {
                                             }}
                                         </Field>
                                     </div>
-                                    <div className={this.state.customDomain?"hidden":"col-md-1"}>
+                                    <div className={this.state.customDomain ? "hidden" : "col-md-1"}>
                                         <button type="submit" className="btn btn-info mb-5 generateButton" disabled={submitting || !valid || pristine}>
                                             <FaArrowRight />
                                         </button>
@@ -115,7 +123,7 @@ class Dashboard extends Component {
                                             </Field>
                                         </div>
                                         <div className="col-md-12 text-center">
-                                            <button className="btn btn-danger mb-5 generateButton mr-4" onClick={ this.closeCustomDomain }>
+                                            <button className="btn btn-danger mb-5 generateButton mr-4" onClick={this.closeCustomDomain}>
                                                 <MdClose />
                                             </button>
                                             <button type="submit" className="btn btn-info mb-5 generateButton" disabled={submitting || !valid || pristine}>
@@ -125,17 +133,45 @@ class Dashboard extends Component {
                                     </div>
                                 </div>
 
+                                <div className={
+                                    !this.props.state.LinkShortnerReducer.response
+                                        ? "hidden"
+                                        : this.props.state.LinkShortnerReducer.response.status === 403
+                                            ? "container bg-dark text-danger text-center text-lg p-3 link"
+                                            : "container bg-dark text-light text-center text-lg p-3 link"
+
+                                }>
+                                    <h3 className="m-0">
+                                        {
+                                            !this.props.state.LinkShortnerReducer.response
+                                            ? ""
+                                            : this.props.state.LinkShortnerReducer.response.status === 403
+                                                ? "Token already exists!"
+                                                : this.props.state.LinkShortnerReducer.response.status === 200
+                                                    ? "http://someshorturl.com/"+this.props.state.LinkShortnerReducer.response.body.token
+                                                    : "Something went wrong. Try again."
+                                        }
+                                    </h3>
+                                </div>
+
                                 <p className="text-center text-danger p-2"><b>NOTE: </b> Link generated will be valid only for 7 days.</p>
                             </form>
                         )}
                     />
                 </div>
+
+
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
+    console.log("STATE: ", state)
+    if (state.LinkShortnerReducer.action && state.LinkShortnerReducer.action === 'CREATE_LINK_RESPONSE') {
+        response = state.LinkShortnerReducer.response
+        console.log("Response: ", response)
+    }
     return {
         state
     };
@@ -143,8 +179,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        propsToCallApi: (data) => {
-            return dispatch(callApi(data)) // this function will come from action file
+        createLink: (data) => {
+            return dispatch(createLink(data)) // this function will come from action file
         }
     };
 }
