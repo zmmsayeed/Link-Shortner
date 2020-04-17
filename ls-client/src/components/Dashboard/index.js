@@ -137,21 +137,23 @@ class Dashboard extends Component {
                                     !this.props.state.LinkShortnerReducer.response
                                         ? "hidden"
                                         : this.props.state.LinkShortnerReducer.response.status === 403
-                                            ? "container bg-dark text-danger text-center text-lg p-3 link"
+                                            ? "container bg-dark text-danger text-center text-lg p-3"
                                             : "container bg-dark text-light text-center text-lg p-3 link"
 
                                 }>
-                                    <h3 className="m-0">
-                                        {
-                                            !this.props.state.LinkShortnerReducer.response
+                                    {
+                                        !this.props.state.LinkShortnerReducer.response
                                             ? ""
                                             : this.props.state.LinkShortnerReducer.response.status === 403
-                                                ? "Token already exists!"
+                                                ? <h3 className="m-0">"Token already exists!"</h3>
                                                 : this.props.state.LinkShortnerReducer.response.status === 200
-                                                    ? "http://someshorturl.com/"+this.props.state.LinkShortnerReducer.response.body.token
-                                                    : "Something went wrong. Try again."
-                                        }
-                                    </h3>
+                                                    ? (<a href={"http://localhost:3001/redirect?token=" + this.props.state.LinkShortnerReducer.response.body.token} target="_blank">
+                                                        <h3 className="m-0">
+                                                            {"http://someshorturl.com/" + this.props.state.LinkShortnerReducer.response.body.token}
+                                                        </h3>
+                                                    </a>)
+                                                    : <h3 className="m-0">"Something went wrong. Try again."</h3>
+                                    }
                                 </div>
 
                                 <p className="text-center text-danger p-2"><b>NOTE: </b> Link generated will be valid only for 7 days.</p>
