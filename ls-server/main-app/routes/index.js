@@ -111,4 +111,27 @@ router.post('/createLink', async (req, res) => {
 
 });
 
+router.get('/redirect', async (req, res) => {
+    try {
+        let token = req.query.token
+        if (token) {
+            let findToken = await db.getDb().collection('linkShortner').findOne({ token: token })
+            if (findToken) {
+                res.redirect(301, findToken.link)
+            }
+            else {
+
+            }
+            res.redirect(301, "http://localhost:3000/")
+        }
+        else {
+            res.redirect(301, "http://localhost:3000/")
+        }
+    }
+    catch (error) {
+        res.send({ error: error })
+    }
+    // res.redirect(301, "http://google.com")
+});
+
 module.exports = { coreRoutes: router };   
