@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Form, Field } from 'react-final-form';
+import { Animated } from "react-animated-css";
 
 // importing components
 import Navbar from '../Navbar';
@@ -62,8 +63,11 @@ class Dashboard extends Component {
 
     render() {
         return (
+
             <div className="mainContainer">
-                <Navbar />
+                <Animated animationIn="fadeInDown" animationOut="fadeOut" isVisible={true}>
+                    <Navbar />
+                </Animated>
 
                 <div className="innerContainer p-5 h-100 mx-auto mt-5">
                     <h1 className="text-center font-weight-bold">SHORTENING YOUR URL?</h1>
@@ -74,29 +78,33 @@ class Dashboard extends Component {
                             <form onSubmit={handleSubmit} >
                                 <div className="row">
                                     <div className={this.state.customDomain ? "col-md-12" : "col-md-11"}>
-                                        <Field name="link" placeholder="http://enter-long-url-here.com">
-                                            {({ input, meta, placeholder }) => {
-                                                let error = false;
-                                                if (meta.error && meta.visited && !meta.active) {
-                                                    error = true;
-                                                }
-                                                else {
-                                                    error = false;
-                                                }
-                                                return (
-                                                    <div className="form-group">
-                                                        <input {...input} type="text" placeholder={placeholder} className={error ? "form-control is-invalid" : "form-control"} />
-                                                        <small className={error ? "form-text text-danger" : "hidden"}>{meta.error}</small>
-                                                    </div>
-                                                )
-                                            }}
-                                        </Field>
+                                        <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
+                                            <Field name="link" placeholder="http://enter-long-url-here.com">
+                                                {({ input, meta, placeholder }) => {
+                                                    let error = false;
+                                                    if (meta.error && meta.visited && !meta.active) {
+                                                        error = true;
+                                                    }
+                                                    else {
+                                                        error = false;
+                                                    }
+                                                    return (
+                                                        <div className="form-group">
+                                                            <input {...input} type="text" placeholder={placeholder} className={error ? "form-control is-invalid" : "form-control"} />
+                                                            <small className={error ? "form-text text-danger" : "hidden"}>{meta.error}</small>
+                                                        </div>
+                                                    )
+                                                }}
+                                            </Field>
+                                        </Animated>
                                     </div>
-                                    <div className={this.state.customDomain ? "hidden" : "col-md-1"}>
-                                        <button type="submit" className="btn btn-info mb-5 generateButton" disabled={submitting || !valid || pristine}>
-                                            <FaArrowRight />
-                                        </button>
-                                    </div>
+                                    <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
+                                        <div className={this.state.customDomain ? "hidden" : "col-md-1"}>
+                                            <button type="submit" className="btn btn-info mb-5 generateButton" disabled={submitting || !valid || pristine}>
+                                                <FaArrowRight />
+                                            </button>
+                                        </div>
+                                    </Animated>
                                 </div>
 
                                 <p className={this.state.customDomain ? "hidden" : "text-center p-3 font-weight-bold text-light link"} onClick={this.customDomain}>
